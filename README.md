@@ -6,7 +6,7 @@ Please specify
 - AWS_SECRET_ACCESS_KEY
 - AWS_BUCKET_NAME
 
-Es: Run docker
+Es: Run docker with --privileged
 
 ```
 docker run --privileged -it -e AWS_ACCESS_KEY_ID=XXXXXXX -e AWS_SECRET_ACCESS_KEY=XXXXXXX -e AWS_BUCKET_NAME=bucketname gdals3
