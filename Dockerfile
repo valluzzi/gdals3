@@ -7,20 +7,12 @@ RUN apt-get -y install python3-pip git tar
 
 RUN apt-get -y install fuse s3fs 
 
-ARG ACCSESS_KEY
-ARG SECRET_KEY
-ENV ACCSESS_KEY=${ACCSESS_KEY}
+ENV ACCESS_KEY=${ACCESS_KEY}
 ENV SECRET_KEY=${SECRET_KEY}
-RUN echo "${ACCESS_KEY}:${SECRET_KEY}" > /etc/passwd-s3fs
-ENV ACCSESS_KEY=""
-ENV SECRET_KEY=""
-# mount s3 bucket with s3fs
-# COPY ./passwd-s3fs /etc/passwd-s3fs
-# RUN chmod 600 /etc/passwd-s3fs
+ENV BUCKET_NAME=${BUCKET_NAME}
 
 COPY ./mount-s3.sh .
-RUN chmod +x mount-s3.sh
-
+RUN chmod +x mount-s3.sh 
 # Remember to run with --privileged !!!! 
 # docker run --privileged  -it p1
 ENTRYPOINT ["./mount-s3.sh"]
