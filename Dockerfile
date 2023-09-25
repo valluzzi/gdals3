@@ -7,9 +7,9 @@ RUN apt-get -y install python3-pip git tar
 
 RUN apt-get -y install fuse s3fs 
 
-ENV ACCESS_KEY=${ACCESS_KEY}
-ENV SECRET_KEY=${SECRET_KEY}
-ENV BUCKET_NAME=${BUCKET_NAME}
+ENV AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+ENV AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+ENV AWS_BUCKET_NAME=${AWS_BUCKET_NAME}
 
 COPY ./mount-s3.sh .
 RUN chmod +x mount-s3.sh 
